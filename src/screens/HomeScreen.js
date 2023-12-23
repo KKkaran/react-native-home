@@ -12,8 +12,8 @@ const HomeScreen = ({navigation}) => {
           console.log("going to component screen")
         }
         } />
-      <Button
-        title="Go to List Screen"
+       <Button
+       title="Go to List Screen"
         onPress={() => {
           navigation.navigate("ListScreen");
           console.log("going to list screen")
@@ -29,6 +29,12 @@ const HomeScreen = ({navigation}) => {
         onPress={() => {
           navigation.navigate("CounterScreen");
           console.log("going to counter screen")
+        }} />
+       <Button
+        title="Go to Color picker Screen"
+        onPress={() => {
+          navigation.navigate("ColorChooseScreen");
+          console.log("going to color picker screen")
         }} />
       {/* <TouchableOpacity onPress={()=> console.log("list clicked")}>
         <Text>Go to List Demo</Text>
