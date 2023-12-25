@@ -1,32 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import { View, Text, StyleSheet, Button } from 'react-native';
 import { FlatList } from "react-native-gesture-handler";
 
+const INCREMENT_COUNTER = 10;
+const reducer = (state, {type, payload}) => {
+    switch (type) {
+        case "increment":
+            return {...state, count:state.count + payload}
+        case "decrement":                                                               
+            return {...state, count:state.count - payload}
+        default:
+            return state
+    }
+}
+
 const Counter = () => {
     //console.log(src)
-    let [counter, setCounter] = useState(0);
+    const [counter, dispatch] = useReducer(reducer, { count: 0 })
+    const { count } = counter;
     const [name, setName] = useState("");
     const [colors, setColor] = useState([]);
     return <View>
         <Button
             title="Increment"
             onPress={() => {
-                setCounter(++counter)
-                console.log(counter)
-                if (counter >= 10) {
-                    setName("Karan")
-                } 
+                console.log("increment")
+                dispatch({type:'increment', payload: INCREMENT_COUNTER})
             }} />
         <Button
             title="Decrement"
             onPress={() => {
-                setCounter(--counter);
-                console.log(counter)
-                if(counter < 10) {
-                    setName("")
-                }
+                console.log("decrement")
+                dispatch({type:'decrement', payload: INCREMENT_COUNTER})
+
             }} />
-        <Text style={styles.text}>Current Count: {counter}</Text>
+        <Text style={styles.text}>Current Count:{count}</Text>
         <Text style={styles.text}>{name}</Text>
         <Button
             title="Add Color"
