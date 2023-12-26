@@ -36,6 +36,12 @@ const HomeScreen = ({navigation}) => {
           navigation.navigate("ColorChooseScreen");
           console.log("going to color picker screen")
         }} />
+        <Button
+        title="Go to CSS Screen"
+        onPress={() => {
+          navigation.navigate("CSSScreen");
+          console.log("going to css screen")
+        }} />
       {/* <TouchableOpacity onPress={()=> console.log("list clicked")}>
         <Text>Go to List Demo</Text>
       </TouchableOpacity> */}
